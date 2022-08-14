@@ -1,0 +1,20 @@
+[
+    {
+      "name": "Pizza", "calories": 200, "fat": 6.0, "carbs": 24, "protein": 4.0
+    },
+    {
+      "name": "Hot Dog", "calories": 300, "fat": 6.0, "carbs": 24, "protein": 4.0
+    },
+    {
+      "name": "Burger", "calories": 400, "fat": 6.0, "carbs": 24, "protein": 4.0
+    },
+    {
+      "name": "Hamburger", "calories": 500, "fat": 6.0, "carbs": 24, "protein": 4.0
+    },
+    {
+      "name": "Fries", "calories": 600, "fat": 6.0, "carbs": 24, "protein": 4.0
+    },
+    {
+      "name": "Ice Cream", "calories": 700, "fat": 6.0, "carbs": 24, "protein": 4.0
+    }
+  ]
