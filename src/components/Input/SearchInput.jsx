@@ -7,6 +7,7 @@ import '../../assets/styles/component.css';
 const useStyles = makeStyles({
   searchBar: {
     width: 300,
+    height: 40,
     boxShadow: 'none',
     backgroundColor: '#eeeeee',
   },

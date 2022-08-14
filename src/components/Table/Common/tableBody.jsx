@@ -6,28 +6,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 
 const useStyles = makeStyles({
-  root: {
-    width: '100%',
-    padding: '1%',
-  },
-  container: {
-    minHeight: 500,
-    maxHeight: 550,
-    marginTop: '1%',
-  },
   tableCell: {
     borderBottom: 'none',
-  },
-  tablePagination: {
-    borderBottom: 'none',
-    borderTop: '1px solid #808080',
-  },
-  tableHead: {
-    borderTop: '1px solid #808080',
-  },
-  tableProperty: {
-    display: 'flex',
-    justifyContent: 'space-between',
   },
 });
 
@@ -74,7 +54,7 @@ function TableBodyCustom({
               {(body.type && (
 
                 <CardMedia
-                  sx={{ maxWidth: 100 }}
+                  sx={{ maxWidth: 90, borderRadius: 1 }}
                   component="video"
                   autoPlay
                   controls

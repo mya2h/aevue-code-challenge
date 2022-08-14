@@ -25,15 +25,16 @@ const useStyles = makeStyles({
     maxHeight: 550,
     marginTop: '1%',
   },
-  tableCell: {
-    borderBottom: 'none',
-  },
   tablePagination: {
     borderBottom: 'none',
     borderTop: '1px solid #808080',
   },
   tableHead: {
     borderTop: '1px solid #808080',
+  },
+  tableCell: {
+    borderBottom: 'none',
+    fontWeight: 600,
   },
   tableProperty: {
     display: 'flex',
@@ -52,7 +53,7 @@ function BasicTable({ data, tableHeaders, tableBodies }) {
   const classes = useStyles();
   const [rows, setRows] = useState([]);
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(8);
   const [searched, setSearched] = useState('');
 
   useEffect(() => {
@@ -100,7 +101,7 @@ function BasicTable({ data, tableHeaders, tableBodies }) {
         className={classes.container}
         elevation={0}
       >
-        <Table stickyHeade elevation={0}>
+        <Table stickyHeade elevation={0} size="small">
           <TableHead className={classes.tableHead}>
             <TableRow>
               {tableHeaders.map((header) => (
@@ -121,7 +122,7 @@ function BasicTable({ data, tableHeaders, tableBodies }) {
               <TablePagination
                 className={classes.tablePagination}
                 labelRowsPerPage=""
-                rowsPerPageOptions={[5, 15, { label: 'All', value: -1 }]}
+                rowsPerPageOptions={[8, 16, { label: 'All', value: -1 }]}
                 count={rows.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
