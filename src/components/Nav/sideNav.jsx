@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import Box from '@mui/material/Box';
-import List from '@mui/material/List';
+import {
+  Box, List, ListItemIcon, ListItemText,
+} from '@mui/material';
 import MuiListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 
 const useStyles = makeStyles(() => ({
   listItemRoot: {
@@ -27,7 +26,7 @@ const ListItem = withStyles({
   selected: {},
 })(MuiListItem);
 
-export default function SelectedListItem({ lists }) {
+function SideNav({ lists }) {
   const classes = useStyles();
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
@@ -43,7 +42,6 @@ export default function SelectedListItem({ lists }) {
             selected={selectedIndex === data.index}
             onClick={(event) => handleListItemClick(event, data.index)}
           >
-
             <ListItemIcon>
               {data.icon}
             </ListItemIcon>
@@ -54,3 +52,4 @@ export default function SelectedListItem({ lists }) {
     </Box>
   );
 }
+export default SideNav;

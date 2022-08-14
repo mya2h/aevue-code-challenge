@@ -1,22 +1,19 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-cond-assign */
-/* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import CardMedia from '@mui/material/CardMedia';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import TableFooter from '@material-ui/core/TableFooter';
-import TablePagination from '@material-ui/core/TablePagination';
-import TablePaginationActions from './tablePagination';
-import Search from '../../Input/SearchInput';
-import Select from '../../Input/SelectInput';
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TableFooter,
+  TablePagination,
+} from '@material-ui/core';
+import { Search, Select } from '../../Input';
+import { TableBodyCustom, TablePaginationActions } from '../Common';
 
 const useStyles = makeStyles({
   root: {
@@ -44,34 +41,13 @@ const useStyles = makeStyles({
   },
 });
 
-const getProperty = (obj, prop) => {
-  const parts = prop.split('.');
-
-  if (Array.isArray(parts)) {
-    const last = parts.length > 1 ? parts.pop() : parts;
-    const l = parts.length;
-    let i = 1;
-    let current = parts[0];
-
-    while ((obj = obj[current]) && i < l) {
-      current = parts[i];
-      i += 1;
-    }
-
-    if (typeof obj === 'object') {
-      return obj[last];
-    }
-    return obj;
-  }
-  throw new Error('parts is not valid array');
-};
-
 const options = [
   {
     name: 'last 7 days',
     value: 'last7days',
   },
 ];
+
 function BasicTable({ data, tableHeaders, tableBodies }) {
   const classes = useStyles();
   const [rows, setRows] = useState([]);
@@ -98,8 +74,6 @@ function BasicTable({ data, tableHeaders, tableBodies }) {
     requestSearch(searched);
   };
 
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
-
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -120,7 +94,6 @@ function BasicTable({ data, tableHeaders, tableBodies }) {
           onChange={(searchVal) => requestSearch(searchVal)}
           onCancelSearch={() => cancelSearch()}
         />
-
         <Select value="last7days" label="" options={options} handleChange={handleChange} />
       </div>
       <TableContainer
@@ -136,37 +109,12 @@ function BasicTable({ data, tableHeaders, tableBodies }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {(rows && rowsPerPage > 0
-              ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              : rows
-            ).map((data) => (
-              <TableRow key={data.id}>
-                {tableBodies.map((body) => (typeof body === 'string' ? (
-                  <TableCell key={body} className={classes.tableCell}>
-                    {getProperty(data, body)}
-                  </TableCell>
-                ) : (
-                  <TableCell key={body} className={classes.tableCell}>
-                    {(body.type && (
-
-                    <CardMedia
-                      sx={{ maxWidth: 100 }}
-                      component="video"
-                      autoPlay
-                      controls
-                      src="../../assets/image/sample.mp4"
-                    />
-                    ))}
-                    {body.icon}
-                  </TableCell>
-                )))}
-              </TableRow>
-            ))}
-            {emptyRows > 0 && (
-            <TableRow style={{ height: 53 * emptyRows }}>
-              <TableCell colSpan={6} />
-            </TableRow>
-            )}
+            <TableBodyCustom
+              rows={rows}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              tableBodies={tableBodies}
+            />
           </TableBody>
           <TableFooter>
             <TableRow>

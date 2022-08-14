@@ -1,5 +1,5 @@
 import React from 'react';
-import Videos from './videos';
+import Videos from './Videos';
 
 function Dashboard() {
   return (
