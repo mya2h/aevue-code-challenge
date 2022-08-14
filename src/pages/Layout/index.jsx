@@ -1,4 +1,7 @@
 import * as React from 'react';
+import {
+  Routes, Route,
+} from 'react-router-dom';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import {
@@ -16,21 +19,25 @@ const lists = [
     index: 0,
     name: 'Dashboard',
     icon: <DashboardIcon />,
+    link: 'dashboard',
   },
   {
     index: 1,
     name: 'Users',
     icon: <PersonIcon />,
+    link: 'dashboard',
   },
   {
     index: 2,
     name: 'Notifications',
     icon: <NotificationsIcon />,
+    link: 'dashboard',
   },
   {
     index: 3,
     name: 'Reports',
     icon: <AssessmentIcon />,
+    link: 'dashboard',
   },
 ];
 
@@ -45,6 +52,13 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme();
 
 function Layout() {
+  const switchRoute = (
+    <Routes>
+      <Route exact path="dashboard" element={<Dashboard />} />
+      {/* <Navigate to="/dashboard" /> */}
+
+    </Routes>
+  );
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
@@ -67,7 +81,8 @@ function Layout() {
         >
           <Toolbar />
           <Container sx={{ mt: 4, mb: 4 }}>
-            <Dashboard />
+            {switchRoute}
+            {/* <Dashboard /> */}
           </Container>
         </Box>
       </Box>

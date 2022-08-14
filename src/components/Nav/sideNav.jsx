@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
+import { NavLink } from 'react-router-dom';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import {
   Box, List, ListItemIcon, ListItemText,
@@ -10,6 +11,10 @@ const useStyles = makeStyles(() => ({
   listItemRoot: {
     minWidth: 220,
     marginTop: 30,
+  },
+  nav: {
+    textDecoration: 'none',
+    color: 'black',
   },
 }));
 
@@ -38,16 +43,18 @@ function SideNav({ lists }) {
     <Box className={classes.listItemRoot}>
       <List size="small">
         {lists.map((data) => (
-          <ListItem
-            selected={selectedIndex === data.index}
-            onClick={(event) => handleListItemClick(event, data.index)}
-            sx={{ fontSize: '14px' }}
-          >
-            <ListItemIcon>
-              {data.icon}
-            </ListItemIcon>
-            <ListItemText primary={data.name} />
-          </ListItem>
+          <NavLink to={data.link} className={classes.nav}>
+            <ListItem
+              selected={selectedIndex === data.index}
+              onClick={(event) => handleListItemClick(event, data.index)}
+              sx={{ fontSize: '14px' }}
+            >
+              <ListItemIcon>
+                {data.icon}
+              </ListItemIcon>
+              <ListItemText primary={data.name} />
+            </ListItem>
+          </NavLink>
         ))}
       </List>
     </Box>
