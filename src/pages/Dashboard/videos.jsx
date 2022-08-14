@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-shadow */
 import React, { useEffect, useState } from 'react';
-import Paper from '@mui/material/Paper';
+import { Typography } from '@mui/material';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { useSelector, useDispatch } from 'react-redux';
@@ -28,14 +28,18 @@ function Videos() {
 
   };
 
-  const tableHeaders = ['Food (100g serving)', 'Calories', 'Fat (g)', 'Carbs (g)', 'Protein (g)', 'Edit', 'Delete'];
+  const tableHeaders = ['Thumbnail', 'Video Title', 'User Name', 'Upload Date', 'Views', 'Comments', 'Likes', 'Edit', 'Delete'];
 
   const tableBodies = [
-    'name',
-    'calories',
-    'fat',
-    'carbs',
-    'protein',
+    {
+      type: 'video',
+    },
+    'title',
+    'userName',
+    'uploadDate',
+    'views',
+    'comments',
+    'likes',
     {
       action: { editRow },
       icon: <EditIcon color="primary" />,
@@ -47,13 +51,22 @@ function Videos() {
   ];
 
   return (
-    <Paper>
+    <>
+      <Typography
+        variant="h6"
+        color="#000000"
+        noWrap
+        sx={{ flexGrow: 1, fontWeight: 'bold' }}
+      >
+        Videos
+      </Typography>
       <StickyHeadTable
         data={state.videos}
         tableHeaders={tableHeaders}
         tableBodies={tableBodies}
       />
-    </Paper>
+    </>
+
   );
 }
 export default Videos;

@@ -18,6 +18,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import Nav from '../../components/Nav/sideNav';
 import Dashboard from '../Dashboard';
 import profileImage from '../../assets/image/profile.png';
+import Search from '../../components/Input/SearchInput';
 
 const lists = [
   {
@@ -66,14 +67,14 @@ function Layout() {
         <AppBar position="absolute" elevation={1} sx={{ bgcolor: 'background.paper' }}>
           <Toolbar>
             <Typography
-              component="h1"
               variant="h6"
               color="#000000"
               noWrap
-              sx={{ flexGrow: 1 }}
+              sx={{ flexGrow: 1, fontWeight: 'bold' }}
             >
               Logo
             </Typography>
+            <Search />
             <IconButton>
               <Avatar alt="Remy Sharp" src={profileImage} />
               <ArrowDropDownIcon />

@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
+import MuiListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
@@ -13,6 +13,19 @@ const useStyles = makeStyles(() => ({
     marginTop: 30,
   },
 }));
+
+const ListItem = withStyles({
+  root: {
+    '&$selected': {
+      backgroundColor: 'blue',
+      color: '#3399ff',
+      '& .MuiListItemIcon-root': {
+        color: '#3399ff',
+      },
+    },
+  },
+  selected: {},
+})(MuiListItem);
 
 export default function SelectedListItem({ lists }) {
   const classes = useStyles();
@@ -24,19 +37,18 @@ export default function SelectedListItem({ lists }) {
 
   return (
     <Box className={classes.listItemRoot}>
-      <List component="nav">
+      <List>
         {lists.map((data) => (
-          <ListItemButton
+          <ListItem
             selected={selectedIndex === data.index}
             onClick={(event) => handleListItemClick(event, data.index)}
-            classes={{ selected: classes.active }}
           >
 
             <ListItemIcon>
               {data.icon}
             </ListItemIcon>
             <ListItemText primary={data.name} />
-          </ListItemButton>
+          </ListItem>
         ))}
       </List>
     </Box>
