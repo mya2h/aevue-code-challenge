@@ -36,11 +36,12 @@ function SideNav({ lists }) {
 
   return (
     <Box className={classes.listItemRoot}>
-      <List>
+      <List size="small">
         {lists.map((data) => (
           <ListItem
             selected={selectedIndex === data.index}
             onClick={(event) => handleListItemClick(event, data.index)}
+            sx={{ fontSize: '14px' }}
           >
             <ListItemIcon>
               {data.icon}
