@@ -74,3 +74,5 @@ https://github.com/facebook/create-react-app
 **Material UI**: Refer to https://mui.com/material-ui/getting-started/overview/ to understand the concepts of material UI design framework 
 
 **Redux**: Refer to https://react-redux.js.org/ to understand more about the redux state managment
+
+**React router dom**: Refer to https://reactrouter.com/docs/en/v6/getting-started/overview to understand more about the react routing

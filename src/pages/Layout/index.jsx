@@ -55,8 +55,6 @@ function Layout() {
   const switchRoute = (
     <Routes>
       <Route exact path="dashboard" element={<Dashboard />} />
-      {/* <Navigate to="/dashboard" /> */}
-
     </Routes>
   );
   return (
@@ -82,7 +80,6 @@ function Layout() {
           <Toolbar />
           <Container sx={{ mt: 4, mb: 4 }}>
             {switchRoute}
-            {/* <Dashboard /> */}
           </Container>
         </Box>
       </Box>
