@@ -1,7 +1,7 @@
 /* eslint-disable no-shadow */
 import React, { useEffect } from 'react';
 import { Typography } from '@mui/material';
-import DeleteIcon from '@material-ui/icons/Delete';
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import EditIcon from '@material-ui/icons/Edit';
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -44,7 +44,7 @@ function Videos() {
     },
     {
       action: { deleteRow },
-      icon: <DeleteIcon />,
+      icon: <DeleteOutlineIcon />,
     },
   ];
 
